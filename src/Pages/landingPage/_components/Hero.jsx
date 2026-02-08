@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
 import { easeOut, motion, useScroll, useTransform } from "motion/react";
@@ -30,6 +30,36 @@ export default function Hero() {
         target: containerRef,
         offset: ["start start", "end start"]
     });
+
+    const [stats, setStats] = useState({
+        downloads: "...",
+        version: "..."
+    });
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                // Fetch downloads (last month)
+                const downloadsRes = await fetch('https://api.npmjs.org/downloads/point/last-month/@ayush24k/telezipper');
+                const downloadsData = await downloadsRes.json();
+
+                // Fetch latest version
+                const versionRes = await fetch('https://registry.npmjs.org/@ayush24k/telezipper/latest');
+                const versionData = await versionRes.json();
+
+                setStats({
+                    downloads: downloadsData.downloads ? downloadsData.downloads.toLocaleString() + "+" : "20k+",
+                    version: versionData.version ? `v${versionData.version}` : "v1.0.8"
+                });
+            } catch (error) {
+                console.error("Failed to fetch npm stats:", error);
+                // Fallback values in case of error
+                setStats({ downloads: "20k+", version: "v1.0.8" });
+            }
+        };
+
+        fetchStats();
+    }, []);
 
     // Parallax effect for text/elements as user scrolls down
     const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
@@ -158,8 +188,8 @@ export default function Hero() {
                         <div className="text-left">
                             <p className="text-sm text-white/40 font-medium">Monthly Downloads</p>
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-white">20k+</span>
-                                <span className="text-xs text-green-400 flex items-center bg-green-500/10 px-1.5 py-0.5 rounded-full">+12% <ArrowUpRight size={10} className="ml-0.5" /></span>
+                                <span className="text-2xl font-bold text-white">{stats.downloads}</span>
+                                <span className="text-xs text-green-400 flex items-center bg-green-500/10 px-1.5 py-0.5 rounded-full">Active <ArrowUpRight size={10} className="ml-0.5" /></span>
                             </div>
                         </div>
                         {/* Subtle shine effect */}
@@ -174,7 +204,7 @@ export default function Hero() {
                         <div className="text-left">
                             <p className="text-sm text-white/40 font-medium">Latest Version</p>
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-white">v1.0.8</span>
+                                <span className="text-2xl font-bold text-white">{stats.version}</span>
                                 <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
                             </div>
                         </div>
