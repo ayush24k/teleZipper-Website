@@ -74,7 +74,7 @@ export default function Navbar() {
                                             <a
                                                 href={link.href}
                                                 key={i}
-                                                className="text-lg hover:text-cyan-400 cursor-pointer"
+                                                className="text-lg hover:text-cyan-400 cursor-pointer w-full text-center py-2 active:text-cyan-300 transition-colors"
                                                 onClick={(e) => handleScroll(e, link.href)}
                                             >
                                                 {link.label}
