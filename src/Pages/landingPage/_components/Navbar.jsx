@@ -16,12 +16,26 @@ export default function Navbar() {
 
     const handleScroll = (e, href) => {
         e.preventDefault();
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setIsOpen(false);
-        }
+        setIsOpen(false); // Close menu first
+
+        // Small delay to let menu close animation complete
+        setTimeout(() => {
+            const element = document.querySelector(href);
+            if (element) {
+                // Get navbar height to offset scroll position
+                const navbarHeight = 100; // Approximate navbar height
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 300); // Match animation duration
     };
+
+
 
     return (
         <section className='p-4 lg:py-8 flex justify-center fixed w-full top-0 z-50'>
