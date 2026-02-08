@@ -52,12 +52,12 @@ export default function Documentation() {
                         <BookOpen size={20} />
                         Documentation
                     </div>
-                    <nav className="space-y-1">
+                    <nav className="space-y-1 md:text-left text-right">
                         {sections.map((section) => (
                             <button
                                 key={section.id}
                                 onClick={() => scrollToSection(section.id)}
-                                className="block w-full text-left px-4 py-2 rounded-lg text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+                                className="block w-full md:text-left text-right px-4 py-2 rounded-lg text-white/60 hover:text-white hover:bg-white/5 transition-colors"
                             >
                                 {section.title}
                             </button>
@@ -67,6 +67,12 @@ export default function Documentation() {
 
                 {/* Main Content */}
                 <main className="flex-1 md:pl-12 py-6 w-full md:max-w-4xl mx-auto overflow-x-hidden">
+                    {/* Back to Home Button - Visible on all screens */}
+                    <Link to="/" className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors group">
+                        <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+                        <span className="font-medium">Back to Home</span>
+                    </Link>
+
                     {/* Introduction */}
                     <section id="introduction" className="mb-16 scroll-mt-24">
                         <Tag>Overview</Tag>
