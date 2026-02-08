@@ -40,7 +40,7 @@ export default function Documentation() {
                 {/* Sidebar */}
                 <aside
                     className={`
-            fixed md:sticky top-10 right-0 md:left-0 h-[calc(100vh-5rem)] w-64 bg-neutral-900 md:bg-transparent border-l md:border-l-0 md:border-r border-white/10 p-6 overflow-y-auto transition-transform duration-300 z-40
+            fixed md:sticky top-0 md:top-10 right-0 md:left-0 h-screen md:h-[calc(100vh-5rem)] w-full md:w-64 bg-neutral-900 md:bg-transparent border-l md:border-l-0 md:border-r border-white/10 p-6 overflow-y-auto transition-transform duration-300 z-40
             ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}
           `}
                 >
