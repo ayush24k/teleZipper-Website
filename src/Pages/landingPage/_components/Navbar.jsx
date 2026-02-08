@@ -25,7 +25,8 @@ export default function Navbar() {
                 // Get navbar height to offset scroll position
                 const navbarHeight = 100; // Approximate navbar height
                 const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                const currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+                const offsetPosition = elementPosition + currentScroll - navbarHeight;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -34,6 +35,7 @@ export default function Navbar() {
             }
         }, 300); // Match animation duration
     };
+
 
 
 
