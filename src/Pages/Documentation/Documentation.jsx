@@ -40,8 +40,8 @@ export default function Documentation() {
                 {/* Sidebar */}
                 <aside
                     className={`
-            fixed md:sticky top-10 left-0 h-[calc(100vh-5rem)] w-64 bg-neutral-900 md:bg-transparent border-r border-white/10 p-6 overflow-y-auto transition-transform duration-300 z-40
-            ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+            fixed md:sticky top-10 right-0 md:left-0 h-[calc(100vh-5rem)] w-64 bg-neutral-900 md:bg-transparent border-l md:border-l-0 md:border-r border-white/10 p-6 overflow-y-auto transition-transform duration-300 z-40
+            ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}
           `}
                 >
                     <Link to="/" className="flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors group">
