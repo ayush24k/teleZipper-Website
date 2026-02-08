@@ -26,9 +26,9 @@ export default function Documentation() {
     };
 
     return (
-        <div className="bg-black text-white selection:bg-cyan-500/30 min-h-screen flex flex-col">
+        <div className="bg-black text-white selection:bg-cyan-500/30 min-h-screen flex flex-col overflow-x-hidden">
 
-            <div className="flex flex-1 container mx-auto px-4 pt-10 pb-8 relative">
+            <div className="flex flex-1 container mx-auto px-4 pt-10 pb-8 relative max-w-full">
                 {/* Mobile Sidebar Toggle */}
                 <button
                     className="md:hidden fixed bottom-6 right-6 z-50 bg-cyan-600 p-3 rounded-full shadow-lg text-white"
@@ -66,7 +66,7 @@ export default function Documentation() {
                 </aside>
 
                 {/* Main Content */}
-                <main className="flex-1 md:pl-12 py-6 max-w-4xl mx-auto">
+                <main className="flex-1 md:pl-12 py-6 max-w-4xl mx-auto w-full overflow-x-hidden">
                     {/* Introduction */}
                     <section id="introduction" className="mb-16 scroll-mt-24">
                         <Tag>Overview</Tag>
