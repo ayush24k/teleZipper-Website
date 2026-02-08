@@ -28,7 +28,7 @@ export default function Documentation() {
     return (
         <div className="bg-black text-white selection:bg-cyan-500/30 min-h-screen flex flex-col overflow-x-hidden">
 
-            <div className="flex flex-1 container mx-auto px-4 pt-10 pb-8 relative max-w-full">
+            <div className="flex flex-1 w-full mx-auto px-4 pt-10 pb-8 relative">
                 {/* Mobile Sidebar Toggle */}
                 <button
                     className="md:hidden fixed bottom-6 right-6 z-50 bg-cyan-600 p-3 rounded-full shadow-lg text-white"
@@ -40,7 +40,7 @@ export default function Documentation() {
                 {/* Sidebar */}
                 <aside
                     className={`
-            fixed md:sticky top-0 md:top-10 right-0 md:left-0 h-screen md:h-[calc(100vh-5rem)] w-full md:w-64 bg-neutral-900 md:bg-transparent border-l md:border-l-0 md:border-r border-white/10 p-6 overflow-y-auto transition-transform duration-300 z-40
+            fixed md:sticky top-0 md:top-10 right-0 md:left-0 h-screen md:h-[calc(100vh-5rem)] w-full md:w-64 bg-neutral-900 md:bg-transparent border-l md:border-l-0 md:border-r border-white/10 p-6 overflow-y-auto overflow-x-hidden transition-transform duration-300 z-40
             ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}
           `}
                 >
@@ -66,7 +66,7 @@ export default function Documentation() {
                 </aside>
 
                 {/* Main Content */}
-                <main className="flex-1 md:pl-12 py-6 max-w-4xl mx-auto w-full overflow-x-hidden">
+                <main className="flex-1 md:pl-12 py-6 w-full md:max-w-4xl mx-auto overflow-x-hidden">
                     {/* Introduction */}
                     <section id="introduction" className="mb-16 scroll-mt-24">
                         <Tag>Overview</Tag>
